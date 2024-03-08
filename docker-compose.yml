@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  mariadb:
+    image: bitnami/mariadb:latest
+    container_name: messenger_db
+    ports:
+      - "3306:3306"
+    environment:
+      ALLOW_EMPTY_PASSWORD: 'yes'
+      MARIADB_USER: user
+      MARIADB_DATABASE: messenger_app
+    networks:
+      - laravel-network
+    volumes:
+      - mariadb_data:/bitnami/mariadb
+
+  laravel:
+    image: bitnami/laravel:latest
+    container_name: messenger_api
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: mariadb
+      DB_PORT: 3306
+      DB_USERNAME: user
+      DB_DATABASE: messenger_app
+    networks:
+      - laravel-network
+    volumes:
+      - ./app:/app
+
+networks:
+  laravel-network:
+    driver: bridge
+
+volumes:
+  mariadb_data:
+    driver: local
