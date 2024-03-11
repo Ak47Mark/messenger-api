@@ -70,7 +70,11 @@ function loadMessages() {
     console.log("Loading messages");
     var token = window.localStorage.getItem("token");
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'api/message/'+selectedUser, true);
+    var user = "";
+    if(selectedUser > 0){
+        user = "/" + selectedUser;
+    }
+    xhr.open('GET', 'api/message'+user, true);
     xhr.setRequestHeader('Authorization', 'Bearer ' + token);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {

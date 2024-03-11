@@ -7,6 +7,11 @@
     cd ..
     docker-compose up
 
+Amint elkészülek a konténerek. Lépjünk az app könytárba majd futtassuk:
+
+    php artisan migrate
+
+
 ## API Végpontok
 
 ### Users
@@ -18,7 +23,7 @@ Email cím és jelszó párossal bejelentkezteti a felhasználót majd visszaadj
 |  |  |
 |----|----|
 | email | Email cím |
-| password | Jelszo |
+| password | Jelszó |
  ```json
 {	
 	"access_token":  "eyJ0eXAiOiJKV1...",

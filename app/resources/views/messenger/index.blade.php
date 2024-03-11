@@ -8,7 +8,7 @@
             <h2>Users</h2>
             <ul id="userList">
                     <li>
-                        <a href="#" class="user" onclick="selectUser()">All messages</a>
+                        <a href="#" class="user" onclick="selectUser(0)">All messages</a>
                     </li>
                 @foreach($users as $user)
                     <li>
